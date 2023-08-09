@@ -6,7 +6,7 @@ $ tree
 │   
 ├── frontend
 │   
-├── jenkins-devops
+├── jenkins
 │   
 ├── Document
 │   ├── [Devops-for-Dev-Assignment] - SD4322 - NguyenHoangChau.docx
