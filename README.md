@@ -1,4 +1,4 @@
-# sd4322_msa
+# SD4322 MSA
 ```bash
 $ tree
 .  
@@ -10,6 +10,7 @@ $ tree
 │   
 ├── Document
 │   ├── [Devops-for-Dev-Assignment] - SD4322 - NguyenHoangChau.docx
+│
 └── README.md
 ```
 
