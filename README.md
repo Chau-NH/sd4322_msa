@@ -19,3 +19,6 @@ Git URL: https://github.com/Chau-NH/frontend
 
 ##### Backend (NodeJS)
 Git URL: https://github.com/Chau-NH/backend
+
+##### DevOps Repo
+Git URL: https://github.com/Chau-NH/jenkins-devops
