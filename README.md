@@ -9,8 +9,8 @@ $ tree
 ├── jenkins
 │   
 ├── Document
-│   ├── [Devops-for-Dev-Assignment] - SD4322 - NguyenHoangChau.docx
-|   ├── [Pi-Sharp-Assignment] - SD4322 - NguyenHoangChau.docx
+│   ├── [Pi-Sharp-Assignment] - SD4322 - NguyenHoangChau.docx
+|   
 │
 └── README.md
 ```
