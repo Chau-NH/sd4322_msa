@@ -15,11 +15,51 @@ void call(Map pipelineParams) {
                     sh 'git pull'
                 }
             }
+
+            stage ('Prepare Package') {
+                steps {
+                    script {
+                        writeFile file: '.ci/html.tpl', text: libraryResource('trivy/html.tpl')
+                    }
+                }
+            }
+
+            stage ("Trivy Scan Secret") {
+                steps {
+                        script {
+                        sh "trivy fs --security-checks secret --exit-code 0 --format template --template @.ci/html.tpl -o .ci/secretreport.html ."
+                        publishHTML (target : [allowMissing: true,
+                            alwaysLinkToLastBuild: true,
+                            keepAll: true,
+                            reportDir: '.ci',
+                            reportFiles: 'secretreport.html',
+                            reportName: 'Trivy Secrets Report',
+                            reportTitles: 'Trivy Secrets Report']
+                        )
+                    }
+                }
+            }
             
             stage('Install Dependencies') {
                 steps {
                     // Install project dependencies using npm
                     sh 'npm install'
+                }
+            }
+
+            stage ("Trivy Scan Vulnerabilities") {
+                steps {
+                        script {
+                        sh "trivy fs --severity HIGH,CRITICAL --security-checks vuln --exit-code 0 --format template --template @.ci/html.tpl -o .ci/vulnreport.html ."
+                        publishHTML (target : [allowMissing: true,
+                            alwaysLinkToLastBuild: true,
+                            keepAll: true,
+                            reportDir: '.ci',
+                            reportFiles: 'vulnreport.html',
+                            reportName: 'Trivy Vulnerabilities Report',
+                            reportTitles: 'Trivy Vulnerabilities Report']
+                        )
+                    }
                 }
             }
 
