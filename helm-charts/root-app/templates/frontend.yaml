@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: fe-image=480566855108.dkr.ecr.us-east-1.amazonaws.com/frontend:latest
+    argocd-image-updater.argoproj.io/fe-image.update-strategy: digest
+    argocd-image-updater.argoproj.io/fe-image.pull-secret: secret:argocd/aws-ecr-creds#creds
+  name: frontend-auto-sync
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: {{ .Values.namespace }}
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: apps/charts/frontend
+    repoURL: https://github.com/Chau-NH/helm-charts.git
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+      - {{ .Values.valuesFile }}
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated: 
+      prune: true 
+      selfHeal: true 

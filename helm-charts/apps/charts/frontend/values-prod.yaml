@@ -1,0 +1,16 @@
+# Replica count for the frontend deployment
+replicaCount: 1
+
+# name of resources such as deployment, container, service
+name: frontend-app-prod
+
+# Image repository and tag for the frontend container
+image:
+  repository: 480566855108.dkr.ecr.us-east-1.amazonaws.com/frontend
+  tag: latest
+
+# Port for the frontend service
+servicePort: 3000
+
+# Protocol
+serviceProtocol: TCP

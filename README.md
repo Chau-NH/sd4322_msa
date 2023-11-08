@@ -5,13 +5,14 @@ $ tree
 ├── backend
 │   
 ├── frontend
+│
+├── helm-charts
 │   
 ├── jenkins
 │   
 ├── Document
 │   ├── [Pi-Sharp-Assignment] - SD4322 - NguyenHoangChau.docx
-|   
-│
+| 
 └── README.md
 ```
 

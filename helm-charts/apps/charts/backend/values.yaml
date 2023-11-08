@@ -1,0 +1,21 @@
+# Replica count for the backend deployment
+replicaCount: 1
+
+# name of resources such as deployment, container, service
+name: backend-app-dev
+
+# Image repository and tag for the backend container
+image:
+  repository: 480566855108.dkr.ecr.us-east-1.amazonaws.com/backend
+  tag: latest
+
+# name of resources such as deployment, container, service
+name: backend
+
+namePreview: backend-preview 
+
+# Port for the backend service
+servicePort: 3000
+
+# Protocol
+serviceProtocol: TCP
